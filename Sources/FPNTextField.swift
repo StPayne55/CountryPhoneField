@@ -11,7 +11,7 @@ import UIKit
 open class FPNTextField: UITextField {
 
 	/// The size of the flag button
-	@objc open var flagButtonSize: CGSize = CGSize(width: 32, height: 32) {
+	@objc open var flagButtonSize: CGSize = CGSize(width: 42, height: 32) {
 		didSet {
 			layoutIfNeeded()
 		}
@@ -155,6 +155,9 @@ open class FPNTextField: UITextField {
 		NSLayoutConstraint(item: phoneCodeTextField, attribute: .trailing, relatedBy: .equal, toItem: leftView, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
 		NSLayoutConstraint(item: phoneCodeTextField, attribute: .top, relatedBy: .equal, toItem: leftView, attribute: .top, multiplier: 1, constant: 0).isActive = true
 		NSLayoutConstraint(item: phoneCodeTextField, attribute: .bottom, relatedBy: .equal, toItem: leftView, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(displayCountries))
+        leftView?.addGestureRecognizer(tapGesture)
 	}
 
 	open override func updateConstraints() {
